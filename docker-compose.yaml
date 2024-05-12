@@ -6,7 +6,7 @@ services:
     ports:
       - "11434:11434"
     volumes:
-      - ${OLLAMA_VOLUME_PATH:-ollama}:/root/.ollama
+      - /root/.ollama
 
   backend:
     build:
@@ -17,7 +17,7 @@ services:
     environment:
       - OLLAMA_HOST=http://ollama:11434
       # Just remove `=xxx` to have the env variable passed forward
-      - OPENAI_API_KEY=xxx
+      - OPENAI_API_KEY
     depends_on:
       - ollama
 volumes:
